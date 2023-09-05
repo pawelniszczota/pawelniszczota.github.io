@@ -1,0 +1,14 @@
+---
+title: "Paweł Niszczota"
+output: html_document
+---
+
+![](images/PN%20UEP-photo.jpg){width="150"}
+
+I am an Assistant Professor at the Poznań University of Economics and Business, and the head of the [**Humans & AI Laboratory (HAI Lab)**](https://hai.ue.poznan.pl).
+
+My research currently focuses mainly on [**large language models**](llm.html), but I also have many papers on [**sin stocks**](sinstocks).
+
+### Latest papers
+
+Niszczota, P., & Abbas, S. (2023). GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice. *Finance Research Letters*, *58*, 104333. <https://doi.org/10.1016/j.frl.2023.104333>

@@ -1,0 +1,14 @@
+name: "pawel_niszczota_homepage"
+output_dir: "docs"
+navbar:
+  title: "Paweł Niszczota"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Large language models"
+      href: llm.html
+    - text: "Sin stocks"
+      href: sinstocks.html
+output:
+  html_document:
+    theme: flatly

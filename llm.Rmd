@@ -1,0 +1,14 @@
+---
+title: "Large language models"
+output: html_document
+---
+
+The work shown on this page was financed by the National Science Centre, Poland. The project is titled "**Botonomics: the influence of intelligent machines on economic behavior**" (grant number: 2020/38/E/HS6/00282).
+
+### Published papers
+
+Niszczota, P., & Abbas, S. (2023). GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice. *Finance Research Letters*, *58*, 104333. <https://doi.org/10.1016/j.frl.2023.104333>
+
+Niszczota, P., & Conway, P. (2023). Judgements of research co-created by Generative AI: Experimental evidence. *Economics and Business Review*, *9*(2). <https://doi.org/10.18559/ebr.2023.2.744>
+
+Niszczota, P., & Rybicka, I. (2023). The credibility of dietary advice formulated by ChatGPT: Robo-diets for people with food allergies. *Nutrition*, *112*, 112076. <https://doi.org/10.1016/j.nut.2023.112076>
