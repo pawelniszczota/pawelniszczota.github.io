@@ -1,1 +1,0 @@
-# pawelniszczota.github.io
