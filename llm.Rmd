@@ -3,7 +3,7 @@ title: "Large language models"
 output: html_document
 ---
 
-The work shown on this page was financed by the National Science Centre, Poland. The project is titled "**Botonomics: the influence of intelligent machines on economic behavior**" (grant number: 2020/38/E/HS6/00282).
+The work shown on this page was financed by the National Science Centre, Poland. The project is titled "**Botonomics: the influence of intelligent machines on economic behavior**" (grant number: 2021/42/E/HS4/00289).
 
 ### Published papers
 
