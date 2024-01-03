@@ -11,4 +11,6 @@ My research currently focuses mainly on [**large language models**](llm.html), b
 
 ### Latest papers
 
-Niszczota, P., & Abbas, S. (2023). GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice. *Finance Research Letters*, *58*, 104333. <https://doi.org/10.1016/j.frl.2023.104333>
+Niszczota, P., Conway, P., & Białek, M. (2024). Moral decay in investment. *Journal of Experimental Social Psychology*, 115, 104664. <https://doi.org/10.1016/j.jesp.2024.104664>
+
+Niszczota, P., & Błaszczyński, J. (2024). Hard to digest investments: People oppose investment in both conventional and cultured meat producers. *Ecological Economics*, *218*, 108094. <https://doi.org/10.1016/j.ecolecon.2023.108094>
