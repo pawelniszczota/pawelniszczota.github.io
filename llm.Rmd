@@ -7,6 +7,8 @@ The work shown on this page was financed by the National Science Centre, Poland.
 
 ### Published papers
 
+Niszczota, P., Janczak, M., & Misiak, M. (2025). Large language models can replicate cross-cultural differences in personality. *Journal of Research in Personality, 115,* 104584. <https://doi.org/10.1016/j.jrp.2025.104584>
+
 Niszczota, P., & Abbas, S. (2023). GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice. *Finance Research Letters*, *58*, 104333. <https://doi.org/10.1016/j.frl.2023.104333>
 
 Niszczota, P., & Conway, P. (2023). Judgements of research co-created by Generative AI: Experimental evidence. *Economics and Business Review*, *9*(2). <https://doi.org/10.18559/ebr.2023.2.744>
