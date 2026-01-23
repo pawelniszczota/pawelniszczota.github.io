@@ -9,6 +9,8 @@ navbar:
       href: llm.html
     - text: "Sin stocks"
       href: sinstocks.html
+    - text: "PhD scholarships - now recruiting!"
+      href: phd.html
 output:
   html_document:
     theme: flatly

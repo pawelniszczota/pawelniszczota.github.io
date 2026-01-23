@@ -10,6 +10,7 @@ I am an Assistant Professor at the Poznań University of Economics and Business,
 My research currently focuses mainly on [**large language models**](llm.html), but I also have many papers on [**sin stocks**](sinstocks).
 
 ### Latest papers
+Niszczota, P., & Antoniou, E. (2026). Do people expect different behavior from large language models acting on their behalf? Evidence from norm elicitations in two canonical economic games (No. arXiv:2601.15312). arXiv. <https://doi.org/10.48550/arXiv.2601.15312>
 
 Niszczota, P., Janczak, M., & Misiak, M. (2025). Large language models can replicate cross-cultural differences in personality. *Journal of Research in Personality*, 115, 104584. <https://doi.org/10.1016/j.jrp.2025.104584>
 
