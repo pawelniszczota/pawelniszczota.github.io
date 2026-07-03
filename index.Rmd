@@ -5,12 +5,19 @@ output: html_document
 
 ![](images/PN%20UEP-photo.jpg){width="150"}
 
-I am an Assistant Professor at the Poznań University of Economics and Business, and the head of the [**Humans & AI Laboratory (HAI Lab)**](https://hai.ue.poznan.pl).
+I am an Associate Professor at the Poznań University of Economics and Business, and the head of the [**Humans & AI Laboratory (HAI Lab)**](https://hai.ue.poznan.pl).
 
 My research currently focuses mainly on [**large language models**](llm.html), but I also have many papers on [**sin stocks**](sinstocks).
 
-### Latest papers
+### Latest working papers
+
 Niszczota, P., & Antoniou, E. (2026). Do people expect different behavior from large language models acting on their behalf? Evidence from norm elicitations in two canonical economic games (No. arXiv:2601.15312). arXiv. <https://doi.org/10.48550/arXiv.2601.15312>
+
+Niszczota, P., & Grützner, C. (2026). Antisocial behavior towards large language model users: Experimental evidence (No. arXiv:2601.09772). arXiv. <https://doi.org/10.48550/arXiv.2601.09772>
+
+Niszczota, P., Grzegorczyk, T., & Pastukhov, A. (2025). People Are Highly Cooperative with Large Language Models, Especially When Communication Is Possible or Following Human Interaction (arXiv:2507.18639). arXiv. <https://doi.org/10.48550/arXiv.2507.18639>
+
+### Latest published papers
 
 Niszczota, P., Janczak, M., & Misiak, M. (2025). Large language models can replicate cross-cultural differences in personality. *Journal of Research in Personality*, 115, 104584. <https://doi.org/10.1016/j.jrp.2025.104584>
 
