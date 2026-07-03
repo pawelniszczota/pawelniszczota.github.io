@@ -5,6 +5,14 @@ output: html_document
 
 The work shown on this page was financed by the National Science Centre, Poland. The project is titled "**Botonomics: the influence of intelligent machines on economic behavior**" (grant number: 2021/42/E/HS4/00289).
 
+### Working papers
+
+Niszczota, P., & Antoniou, E. (2026). Do people expect different behavior from large language models acting on their behalf? Evidence from norm elicitations in two canonical economic games (No. arXiv:2601.15312). arXiv. <https://doi.org/10.48550/arXiv.2601.15312>
+
+Niszczota, P., & Grützner, C. (2026). Antisocial behavior towards large language model users: Experimental evidence (No. arXiv:2601.09772). arXiv. <https://doi.org/10.48550/arXiv.2601.09772>
+
+Niszczota, P., Grzegorczyk, T., & Pastukhov, A. (2025). People Are Highly Cooperative with Large Language Models, Especially When Communication Is Possible or Following Human Interaction (arXiv:2507.18639). arXiv. <https://doi.org/10.48550/arXiv.2507.18639>
+
 ### Published papers
 
 Niszczota, P., Janczak, M., & Misiak, M. (2025). Large language models can replicate cross-cultural differences in personality. *Journal of Research in Personality, 115,* 104584. <https://doi.org/10.1016/j.jrp.2025.104584>
