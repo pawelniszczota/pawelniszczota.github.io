@@ -1,423 +1,153 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-<meta name="date" content="2026-07-03" />
-
-<title>Paweł Niszczota</title>
-
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academic CV | Paweł Niszczota</title>
+  <meta name="description" content="Academic profile and curriculum vitae of Paweł Niszczota, Associate Professor at the Poznań University of Economics and Business.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://pawelniszczota.github.io/cv.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/simple.css">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Academic CV | Paweł Niszczota">
+  <meta property="og:description" content="Academic profile, grants, reviewing, editorial work, and selected conference activity.">
+  <meta property="og:url" content="https://pawelniszczota.github.io/cv.html">
+  <meta name="twitter:card" content="summary">
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="sidebar">
+    <div class="sidebar-head">
+      <a class="site-name" href="index.html">Paweł Niszczota</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Paweł Niszczota</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="llm.html">Large language models</a>
-</li>
-<li>
-  <a href="sinstocks.html">Sin stocks</a>
-</li>
-<li>
-  <a href="phd.html">PhD scholarships - now recruiting!</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <nav id="main-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="llm.html">Large language models</a>
+      <a href="sinstocks.html">Sin stocks</a>
+      <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">HAI Lab ↗</a>
+    </nav>
+  </header>
 
-<div id="header">
+  <main id="main-content">
+    <section class="page-hero shell">
+      <a class="breadcrumb-link" href="index.html">Back to home</a>
+      <p class="page-kicker">Academic profile · Updated July 2026</p>
+      <h1>Curriculum vitae.</h1>
+      <p class="page-intro">Paweł Niszczota, Associate Professor at the Poznań University of Economics and Business and head of the Humans &amp; AI Laboratory.</p>
+      <div class="link-row">
+        <button class="button" type="button" data-print>Print or save as PDF</button>
+        <a class="text-link" href="https://orcid.org/0000-0002-4150-3646" target="_blank" rel="noopener noreferrer">ORCID</a>
+        <a class="text-link" href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="shell content-grid">
+        <aside class="content-aside" aria-label="CV sections">
+          <div class="content-aside-inner">
+            <p class="content-aside-title">On this page</p>
+            <ul class="content-nav">
+              <li><a href="#profile">Profile</a></li>
+              <li><a href="#education">Education</a></li>
+              <li><a href="#funding">Funding</a></li>
+              <li><a href="#service">Academic service</a></li>
+              <li><a href="#conferences">Conferences</a></li>
+            </ul>
+          </div>
+        </aside>
 
+        <div>
+          <section class="content-section" id="profile">
+            <p class="section-kicker">Profile</p>
+            <h2>Current roles.</h2>
+            <ul>
+              <li><strong>Associate Professor</strong>, Poznań University of Economics and Business.</li>
+              <li><strong>Head</strong>, <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">Humans &amp; AI Laboratory (HAI Lab)</a>.</li>
+              <li><strong>Principal Investigator</strong>, Botonomics: the influence of intelligent machines on economic behavior.</li>
+            </ul>
+            <h3>Academic profiles</h3>
+            <ul class="profile-links">
+              <li><a href="https://orcid.org/0000-0002-4150-3646" target="_blank" rel="noopener noreferrer">ORCID · 0000-0002-4150-3646</a></li>
+              <li><a href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+              <li><a href="https://www.researchgate.net/profile/Pawel-Niszczota" target="_blank" rel="noopener noreferrer">ResearchGate</a></li>
+            </ul>
+          </section>
 
-<h1 class="title toc-ignore">Paweł Niszczota</h1>
-<h4 class="date">2026-07-03</h4>
+          <section class="content-section" id="education">
+            <p class="section-kicker">Education</p>
+            <h2>Academic training.</h2>
+            <ul>
+              <li><strong>PhD</strong>, Poznań University of Economics and Business.</li>
+              <li><strong>Master’s degree</strong>, Poznań University of Economics.</li>
+            </ul>
+          </section>
 
-</div>
+          <section class="content-section" id="funding">
+            <p class="section-kicker">Funding</p>
+            <h2>Research grants.</h2>
+            <ul class="timeline">
+              <li><span class="timeline-year">SONATA BIS</span><span>Botonomics: the influence of intelligent machines on economic behavior.</span></li>
+              <li><span class="timeline-year">SONATA</span><span>The gravity of corporate sins: an experimental analysis.</span></li>
+              <li><span class="timeline-year">MINIATURA</span><span>National Science Centre, Poland funding program.</span></li>
+              <li><span class="timeline-year">RID</span><span>Regional Initiative of Excellence funding program.</span></li>
+            </ul>
+          </section>
 
+          <section class="content-section" id="service">
+            <p class="section-kicker">Academic service</p>
+            <h2>Editorial &amp; reviewing work.</h2>
+            <h3>Editorial work</h3>
+            <p>Associate Editor of <em>Economics and Business Review</em> since January 2021.</p>
 
-<p>ORCID: 0000-0002-4150-3646</p>
-<p>Google Scholar: <a
-href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ"
-class="uri">https://scholar.google.com/citations?user=VCQWzd4AAAAJ</a></p>
-<p>ResearchGate: <a
-href="https://www.researchgate.net/profile/Pawel-Niszczota"
-class="uri">https://www.researchgate.net/profile/Pawel-Niszczota</a></p>
-<div id="education" class="section level2">
-<h2>Education</h2>
-<ul>
-<li>2007-2022 Poznań University of Economics and Business, PhD
-degree</li>
-<li>2002-2007: Poznań University of Economics, Master’s Degree</li>
-</ul>
-</div>
-<div id="funding" class="section level2">
-<h2>Funding</h2>
-<ol style="list-style-type: decimal">
-<li><p>SONATA BIS</p></li>
-<li><p>SONATA</p></li>
-<li><p>MINIATURA</p></li>
-<li><p>RID</p></li>
-</ol>
-</div>
-<div id="reviewing-for-journals" class="section level2">
-<h2>Reviewing for journals</h2>
-<p>Emerging Markets Finance and Trade, Finance Research Letters,
-Frontiers in Psychology, Journal of Behavioral Decision Making, Journal
-of Behavioral and Experimental Finance, Journal of Social Psychology,
-The North American Journal of Economics and Finance, Personality and
-Individual Differences, Social Psychology</p>
-</div>
-<div id="reviewing-for-funding-agencies" class="section level2">
-<h2>Reviewing for funding agencies</h2>
-<p><strong>60 reviews</strong> for the National Science Centre, Poland
-(Narodowe Centrum Nauki).</p>
-<p><strong>3 reviews</strong> for other agencies/institutions: NWO
-(Dutch Research Council; Netherlands), SASPRO (Slovak Republic),
-University of Wrocław (Poland)</p>
-</div>
-<div id="editorial-work" class="section level2">
-<h2>Editorial work</h2>
-<p>Associate editor of Economics and Business Review since January
-2021.</p>
-</div>
-<div id="awards-and-distinctions" class="section level2">
-<h2>Awards and distinctions</h2>
-<p>…</p>
-</div>
-<div id="presentations-at-conferences" class="section level2">
-<h2>Presentations at conferences</h2>
-<div id="section" class="section level4">
-<h4>2023</h4>
-<p>International Convention of Psychological Science (ICPS; Brussels);
-29th Subjective Probability, Utility, and Decision Making Conference
-(SPUDM; Vienna); Society for the Advancement of Behavioral
-Economics/International Association for Research in Economic Psychology
-(SABE/IAREP) 2023 Conference (Nice)</p>
-</div>
-<div id="section-1" class="section level4">
-<h4>2022</h4>
-<p>43rd Society for Judgment and Decision Making conference (San Diego;
-poster); 4th Research in Behavioral Finance conference (Amsterdam;
-poster); 6th Solomon Lew Conference on Behavioral Economics (Tel Aviv;
-poster); 15th Behavioural Finance Working Group Conference (London);
-42nd Society for Judgment and Decision Making conference (online,
-poster)</p>
-</div>
-<div id="section-2" class="section level4">
-<h4>2021</h4>
-<p>Society for the Advancement of Behavioral Economics/International
-Association for Research in Economic Psychology (SABE/IAREP) 2021
-Conference (online); 15th Behavioural Finance Working Group Conference
-(online)</p>
-</div>
-<div id="section-3" class="section level4">
-<h4>2019</h4>
-<p>27th Subjective Probability, Utility, and Decision Making Conference
-(SPUDM; Amsterdam)</p>
-</div>
-<div id="section-4" class="section level4">
-<h4>2018</h4>
-<p>Society for the Advancement of Behavioral Economics/International
-Association for Research in Economic Psychology (SABE/IAREP) Conference
-(London)</p>
-</div>
-<div id="section-5" class="section level4">
-<h4>2017</h4>
-<p>26th Subjective Probability, Utility, and Decision Making Conference
-(SPUDM; Haifa), 2017 Conference of the International Society for the
-Study of Individual Differences (ISSID; Warsaw)</p>
-</div>
-<div id="section-6" class="section level4">
-<h4>2010-2014</h4>
-<p>Behavioral Finance Working Group Conference (London; 2014), 3rd
-Emerging Scholars in Banking and Finance Conference (London; 2012),
-European Financial Management Association Doctoral Consortium (Hamburg;
-2010)</p>
-</div>
-</div>
+            <h3>Funding agencies</h3>
+            <p><strong>60 reviews</strong> for the National Science Centre, Poland, and <strong>3 reviews</strong> for other agencies and institutions, including the Dutch Research Council (NWO), SASPRO, and the University of Wrocław.</p>
 
+            <h3>Journals</h3>
+            <p>Reviewer for journals including <em>Finance Research Letters</em>, <em>Journal of Behavioral Decision Making</em>, <em>Journal of Behavioral and Experimental Finance</em>, <em>Personality and Individual Differences</em>, <em>Social Psychology</em>, and others.</p>
+          </section>
 
+          <section class="content-section" id="conferences">
+            <p class="section-kicker">Selected activity</p>
+            <h2>Conference presentations.</h2>
+            <ul class="timeline">
+              <li><span class="timeline-year">2023</span><span>International Convention of Psychological Science (Brussels); Subjective Probability, Utility, and Decision Making Conference (Vienna); SABE/IAREP Conference (Nice).</span></li>
+              <li><span class="timeline-year">2022</span><span>Society for Judgment and Decision Making (San Diego); Research in Behavioral Finance (Amsterdam); Solomon Lew Conference on Behavioral Economics (Tel Aviv); Behavioural Finance Working Group Conference (London).</span></li>
+              <li><span class="timeline-year">2021</span><span>SABE/IAREP Conference and Behavioural Finance Working Group Conference.</span></li>
+              <li><span class="timeline-year">2019</span><span>Subjective Probability, Utility, and Decision Making Conference (Amsterdam).</span></li>
+              <li><span class="timeline-year">2017–2018</span><span>SABE/IAREP Conference (London); SPUDM (Haifa); International Society for the Study of Individual Differences (Warsaw).</span></li>
+              <li><span class="timeline-year">2010–2014</span><span>Behavioral Finance Working Group Conference; Emerging Scholars in Banking and Finance Conference; European Financial Management Association Doctoral Consortium.</span></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-main">
+        <div>
+          <p class="footer-name">Paweł Niszczota</p>
+          <p class="footer-affiliation">Associate Professor · Poznań University of Economics and Business · Head of Humans &amp; AI Laboratory</p>
+        </div>
+        <ul class="footer-links" aria-label="Academic profiles and contact">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="llm.html">LLM research</a></li>
+          <li><a href="sinstocks.html">Sin stocks research</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Paweł Niszczota</span>
+        <span>Academic CV · Updated July 2026</span>
+      </div>
+    </div>
+  </footer>
 
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/simple.js" defer></script>
 </body>
 </html>

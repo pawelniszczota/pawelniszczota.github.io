@@ -1,379 +1,134 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Paweł Niszczota</title>
-
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paweł Niszczota</title>
+  <meta name="description" content="Paweł Niszczota is an Associate Professor at the Poznań University of Economics and Business researching large language models, behavioral finance, and judgment and decision making.">
+  <link rel="canonical" href="https://pawelniszczota.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/simple.css">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Paweł Niszczota">
+  <meta property="og:description" content="Associate Professor researching large language models, behavioral finance, and judgment and decision making.">
+  <meta property="og:url" content="https://pawelniszczota.github.io/">
+  <meta property="og:image" content="https://pawelniszczota.github.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Paweł Niszczota — Behavioral science, Humans and AI, Finance">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Paweł Niszczota">
+  <meta name="twitter:description" content="Associate Professor researching large language models, behavioral finance, and judgment and decision making.">
+  <meta name="twitter:image" content="https://pawelniszczota.github.io/assets/og.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Paweł Niszczota",
+    "url": "https://pawelniszczota.github.io/",
+    "image": "https://pawelniszczota.github.io/images/profile-800.webp",
+    "jobTitle": "Associate Professor",
+    "worksFor": {
+      "@type": "CollegeOrUniversity",
+      "name": "Poznań University of Economics and Business",
+      "url": "https://ue.poznan.pl/en/"
+    },
+    "affiliation": {
+      "@type": "Organization",
+      "name": "Humans & AI Laboratory",
+      "url": "https://hai.ue.poznan.pl"
+    },
+    "sameAs": [
+      "https://orcid.org/0000-0002-4150-3646",
+      "https://scholar.google.com/citations?user=VCQWzd4AAAAJ",
+      "https://www.researchgate.net/profile/Pawel-Niszczota"
+    ]
   }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  </script>
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="sidebar">
+    <div class="sidebar-head">
+      <a class="site-name" href="index.html">Paweł Niszczota</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Paweł Niszczota</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="llm.html">Large language models</a>
-</li>
-<li>
-  <a href="sinstocks.html">Sin stocks</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <nav id="main-navigation" aria-label="Primary navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="llm.html">Large language models</a>
+      <a href="sinstocks.html">Sin stocks</a>
+      <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">HAI Lab ↗</a>
+    </nav>
+  </header>
 
-<div id="header">
+  <main id="main-content" class="main-content">
+    <div class="content-column">
+      <h1>Paweł Niszczota</h1>
 
+      <section class="intro" id="research" aria-labelledby="welcome-heading">
+        <h2 id="welcome-heading">Welcome!</h2>
+        <p>I am an Associate Professor at the <a href="https://ue.poznan.pl/en/" target="_blank" rel="noopener noreferrer">Poznań University of Economics and Business</a>, and the head of the <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">Humans &amp; AI Laboratory (HAI Lab)</a>.</p>
+        <p>My research currently focuses mainly on <a href="llm.html">large language models</a>, but I also study <a href="sinstocks.html">sin stocks</a>, behavioral finance, and judgment and decision making.</p>
+      </section>
 
+      <figure class="profile-photo">
+        <picture>
+          <source srcset="images/profile-480.webp 480w, images/profile-800.webp 800w" type="image/webp" sizes="(max-width: 700px) 72vw, 280px">
+          <img src="images/PN%20UEP-photo.jpg" width="800" height="920" alt="Portrait of Paweł Niszczota">
+        </picture>
+      </figure>
 
-<h1 class="title toc-ignore">Paweł Niszczota</h1>
+      <section class="plain-section" aria-labelledby="working-papers-heading">
+        <h2 id="working-papers-heading">Latest working papers</h2>
+        <ul class="paper-list">
+          <li>
+            <a href="https://doi.org/10.48550/arXiv.2601.09772" target="_blank" rel="noopener noreferrer">Antisocial behavior towards large language model users: Experimental evidence</a>
+            <span>Niszczota, P., &amp; Grützner, C. (2026). arXiv.</span>
+          </li>
+          <li>
+            <a href="https://doi.org/10.48550/arXiv.2507.18639" target="_blank" rel="noopener noreferrer">People Are Highly Cooperative with Large Language Models, Especially When Communication Is Possible or Following Human Interaction</a>
+            <span>Niszczota, P., Grzegorczyk, T., &amp; Pastukhov, A. (2025). arXiv.</span>
+          </li>
+        </ul>
+      </section>
 
-</div>
+      <section class="plain-section" aria-labelledby="published-papers-heading">
+        <h2 id="published-papers-heading">Latest published papers</h2>
+        <ul class="paper-list">
+          <li>
+            <a href="https://doi.org/10.1016/j.jesp.2026.104991" target="_blank" rel="noopener noreferrer">Do people apply different norms to humans and large language models acting on their behalf?</a>
+            <span>Niszczota, P., &amp; Antoniou, E. (2026). <em>Journal of Experimental Social Psychology</em>, 127, 104991.</span>
+          </li>
+          <li>
+            <a href="https://doi.org/10.1016/j.jrp.2025.104584" target="_blank" rel="noopener noreferrer">Large language models can replicate cross-cultural differences in personality</a>
+            <span>Niszczota, P., Janczak, M., &amp; Misiak, M. (2025). <em>Journal of Research in Personality</em>, 115, 104584.</span>
+          </li>
+          <li>
+            <a href="https://doi.org/10.1016/j.jesp.2024.104664" target="_blank" rel="noopener noreferrer">Moral decay in investment</a>
+            <span>Niszczota, P., Conway, P., &amp; Białek, M. (2024). <em>Journal of Experimental Social Psychology</em>, 115, 104664.</span>
+          </li>
+        </ul>
+      </section>
 
+      <section class="plain-section" id="students" aria-labelledby="students-heading">
+        <h2 id="students-heading">PhD students</h2>
+        <p>Please contact me if you are interested in becoming a PhD student under my supervision. I plan to recruit new PhD students in 2027.</p>
+      </section>
 
-<div style="text-align: center;">
-<p><img src="images/PN%20UEP-photo.jpg" width="150" /></p>
-</div>
-<p>I am an Associate Professor at the Poznań University of Economics and
-Business, and the head of the <a
-href="https://hai.ue.poznan.pl"><strong>Humans &amp; AI Laboratory (HAI
-Lab)</strong></a>.</p>
-<p>My research currently focuses on <a href="llm.html"><strong>large
-language models</strong></a>- through work done on the “Botonomics”
-grant from the National Science Centre, Poland - but I also have many
-papers on <a href="sinstocks"><strong>sin stocks</strong></a>, and
-judgment and decision making.</p>
-<div id="latest-working-papers" class="section level3">
-<h3>Latest working papers</h3>
-<p>Niszczota, P., &amp; Grützner, C. (2026). Antisocial behavior towards
-large language model users: Experimental evidence
-(No. arXiv:2601.09772). arXiv. <a
-href="https://doi.org/10.48550/arXiv.2601.09772"
-class="uri">https://doi.org/10.48550/arXiv.2601.09772</a></p>
-<p>Niszczota, P., Grzegorczyk, T., &amp; Pastukhov, A. (2025). People
-Are Highly Cooperative with Large Language Models, Especially When
-Communication Is Possible or Following Human Interaction
-(arXiv:2507.18639). arXiv. <a
-href="https://doi.org/10.48550/arXiv.2507.18639"
-class="uri">https://doi.org/10.48550/arXiv.2507.18639</a></p>
-</div>
-<div id="latest-published-papers" class="section level3">
-<h3>Latest published papers</h3>
-<p>Niszczota, P., &amp; Antoniou, E. (2026). Do people apply different
-norms to humans and large language models acting on their behalf?
-Evidence from norm elicitations in two canonical economic games.
-<em>Journal of Experimental Social Psychology</em>, 127, 104991. <a
-href="https://doi.org/10.1016/j.jesp.2026.104991"
-class="uri">https://doi.org/10.1016/j.jesp.2026.104991</a></p>
-<p>Niszczota, P., Janczak, M., &amp; Misiak, M. (2025). Large language
-models can replicate cross-cultural differences in personality.
-<em>Journal of Research in Personality</em>, 115, 104584. <a
-href="https://doi.org/10.1016/j.jrp.2025.104584"
-class="uri">https://doi.org/10.1016/j.jrp.2025.104584</a></p>
-<p>Niszczota, P., Conway, P., &amp; Białek, M. (2024). Moral decay in
-investment. <em>Journal of Experimental Social Psychology</em>, 115,
-104664. <a href="https://doi.org/10.1016/j.jesp.2024.104664"
-class="uri">https://doi.org/10.1016/j.jesp.2024.104664</a></p>
-<p>Niszczota, P., &amp; Błaszczyński, J. (2024). Hard to digest
-investments: People oppose investment in both conventional and cultured
-meat producers. <em>Ecological Economics</em>, <em>218</em>, 108094. <a
-href="https://doi.org/10.1016/j.ecolecon.2023.108094"
-class="uri">https://doi.org/10.1016/j.ecolecon.2023.108094</a></p>
-</div>
-<div id="phd-students" class="section level3">
-<h3>PhD students</h3>
-<p>Please contact me, if you are interested in becoming a PhD student
-under my supervision. I plan to recruit new PhD students in 2027.</p>
-</div>
-<div id="summary-of-activities" class="section level3">
-<h3>Summary of activities</h3>
-<p><a href="https://orcid.org/0000-0002-4150-3646">ORCID</a> – <a
-href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ">Google
-Scholar</a> – <a
-href="https://www.researchgate.net/profile/Pawel-Niszczota">ResearchGate</a></p>
-</div>
+      <section class="plain-section" aria-labelledby="links-heading">
+        <h2 id="links-heading">Academic profiles</h2>
+        <p class="profile-links"><a href="https://orcid.org/0000-0002-4150-3646" target="_blank" rel="noopener noreferrer">ORCID</a><span>·</span><a href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a><span>·</span><a href="https://www.researchgate.net/profile/Pawel-Niszczota" target="_blank" rel="noopener noreferrer">ResearchGate</a></p>
+      </section>
+    </div>
+  </main>
 
+  <footer class="simple-footer">
+    <p>© 2026 Paweł Niszczota</p>
+  </footer>
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/simple.js" defer></script>
 </body>
 </html>

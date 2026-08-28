@@ -1,363 +1,219 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Sin stocks</title>
-
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sin Stocks &amp; Moral Investment Research | Paweł Niszczota</title>
+  <meta name="description" content="Research by Paweł Niszczota on sin stocks, moral judgment, controversial industries, and the role of machines in investment decisions.">
+  <link rel="canonical" href="https://pawelniszczota.github.io/sinstocks.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/simple.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sin Stocks &amp; Moral Investment Research | Paweł Niszczota">
+  <meta property="og:description" content="Experimental research on how moral values shape investment judgments and attitudes toward controversial companies.">
+  <meta property="og:url" content="https://pawelniszczota.github.io/sinstocks.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sin Stocks &amp; Moral Investment Research | Paweł Niszczota">
+  <meta name="twitter:description" content="Experimental research on how moral values shape investment judgments and attitudes toward controversial companies.">
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="sidebar">
+    <div class="sidebar-head">
+      <a class="site-name" href="index.html">Paweł Niszczota</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Paweł Niszczota</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="llm.html">Large language models</a>
-</li>
-<li>
-  <a href="sinstocks.html">Sin stocks</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <nav id="main-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="llm.html">Large language models</a>
+      <a href="sinstocks.html" aria-current="page">Sin stocks</a>
+      <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">HAI Lab ↗</a>
+    </nav>
+  </header>
 
-<div id="header">
+  <main id="main-content">
+    <section class="page-hero shell">
+      <a class="breadcrumb-link" href="index.html#research">Back to research</a>
+      <p class="page-kicker">Research program · Behavioral finance</p>
+      <h1>Sin stocks &amp; moral investment.</h1>
+      <p class="page-intro">Why do people reject—or accept—investments in morally controversial companies, and what changes when machines enter the decision?</p>
+    </section>
 
+    <section class="section">
+      <div class="shell">
+        <article class="grant-card">
+          <div>
+            <p class="section-kicker">National Science Centre, Poland</p>
+            <h2>The gravity of corporate sins</h2>
+          </div>
+          <div class="grant-copy">
+            <p><strong>The gravity of corporate sins: an experimental analysis</strong> examines the moral psychology of investment in controversial industries.</p>
+            <p>The research presented on this page was financed by the National Science Centre, Poland.</p>
+            <dl class="grant-meta">
+              <div>
+                <dt>Grant number</dt>
+                <dd>2018/31/D/HS4/01814</dd>
+              </div>
+              <div>
+                <dt>Methods</dt>
+                <dd>Behavioral experiments</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Questions</p>
+            <h2>What the work explores.</h2>
+          </div>
+          <p class="section-intro">The program links moral judgment with choices in finance, including attitudes toward industry, fund managers, and automated investment tools.</p>
+        </div>
+        <div class="topic-grid">
+          <article class="topic-card">
+            <h3>Moral boundaries</h3>
+            <p>How deontological and utilitarian judgments predict disapproval of investing in morally controversial companies.</p>
+          </article>
+          <article class="topic-card">
+            <h3>People &amp; context</h3>
+            <p>How gender, parenting, and the perceived character of decision-makers relate to judgments about sin stocks.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Machines in finance</h3>
+            <p>How investors respond to robo-investment and to machines used to identify negative activist investments.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<h1 class="title toc-ignore">Sin stocks</h1>
+    <section class="section" id="papers">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Output</p>
+            <h2>Papers from the program.</h2>
+          </div>
+          <p class="section-intro">Peer-reviewed publications are followed by current working papers.</p>
+        </div>
 
-</div>
+        <div class="publication-group">
+          <h3 class="group-heading">Published papers <span>Peer reviewed</span></h3>
+          <ol class="publication-list">
+            <li class="publication-item">
+              <div class="publication-year">2024</div>
+              <div>
+                <p class="publication-title">Moral decay in investment</p>
+                <p class="publication-meta">Paweł Niszczota, Paul Conway &amp; Michał Białek · <span class="publication-venue">Journal of Experimental Social Psychology, 115</span>, 104664</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.jesp.2024.104664" target="_blank" rel="noopener noreferrer" aria-label="Open Moral decay in investment on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2024</div>
+              <div>
+                <p class="publication-title">Hard to digest investments: People oppose investment in both conventional and cultured meat producers</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Jan Błaszczyński · <span class="publication-venue">Ecological Economics, 218</span>, 108094</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.ecolecon.2023.108094" target="_blank" rel="noopener noreferrer" aria-label="Open Hard to digest investments on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2022</div>
+              <div>
+                <p class="publication-title">Deontological and Utilitarian Responses to Sacrificial Dilemmas Predict Disapproval of Sin Stocks</p>
+                <p class="publication-meta">Paweł Niszczota, Michał Białek &amp; Paul Conway · <span class="publication-venue">Social Psychology, 53</span>(2), 51–62</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1027/1864-9335/a000474" target="_blank" rel="noopener noreferrer" aria-label="Open Deontological and Utilitarian Responses to Sacrificial Dilemmas on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2021</div>
+              <div>
+                <p class="publication-title">Women oppose sin stocks more than men do</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Michał Białek · <span class="publication-venue">Finance Research Letters, 41</span>, 101803</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.frl.2020.101803" target="_blank" rel="noopener noreferrer" aria-label="Open Women oppose sin stocks more than men do on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2021</div>
+              <div>
+                <p class="publication-title">The effect of gender and parenting daughters on judgments of morally controversial companies</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Michał Białek · <span class="publication-venue">PLOS ONE, 16</span>(12), e0260503</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1371/journal.pone.0260503" target="_blank" rel="noopener noreferrer" aria-label="Open The effect of gender and parenting daughters on judgments of morally controversial companies on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2020</div>
+              <div>
+                <p class="publication-title">Robo-investment aversion</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Dávid Kaszás · <span class="publication-venue">PLOS ONE, 15</span>(9), e0239277</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1371/journal.pone.0239277" target="_blank" rel="noopener noreferrer" aria-label="Open Robo-investment aversion on DOI">DOI</a>
+            </li>
+          </ol>
+        </div>
 
+        <div class="publication-group">
+          <h3 class="group-heading">Working papers <span>Preprints</span></h3>
+          <ol class="publication-list">
+            <li class="publication-item">
+              <div class="publication-year">2023</div>
+              <div>
+                <p class="publication-title">Saintly fund managers cannot earn a license to make sinful investments</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Paul Conway · <span class="publication-venue">PsyArXiv</span></p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.31234/osf.io/8gsn4" target="_blank" rel="noopener noreferrer" aria-label="Open Saintly fund managers cannot earn a license to make sinful investments on PsyArXiv">Preprint</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2022</div>
+              <div>
+                <p class="publication-title">Will the use of machines to identify negative activist investments backfire? Experimental evidence</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Dávid Kaszás · <span class="publication-venue">PsyArXiv</span></p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.31234/osf.io/f5dh6" target="_blank" rel="noopener noreferrer" aria-label="Open Will the use of machines to identify negative activist investments backfire on PsyArXiv">Preprint</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-<p>The work shown on this page was financed by the National Science
-Centre, Poland. The project is titled “<strong>The gravity of corporate
-sins: an experimental analysis</strong>” (grant number:
-2018/31/D/HS4/01814).</p>
-<div id="published-papers" class="section level3">
-<h3>Published papers</h3>
-<p>Niszczota, P., Conway, P., &amp; Białek, M. (2024). Moral decay in
-investment. <em>Journal of Experimental Social Psychology</em>, 115,
-104664. <a href="https://doi.org/10.1016/j.jesp.2024.104664"
-class="uri">https://doi.org/10.1016/j.jesp.2024.104664</a></p>
-<p>Niszczota, P., &amp; Błaszczyński, J. (2024). Hard to digest
-investments: People oppose investment in both conventional and cultured
-meat producers. <em>Ecological Economics</em>, <em>218</em>, 108094. <a
-href="https://doi.org/10.1016/j.ecolecon.2023.108094"
-class="uri">https://doi.org/10.1016/j.ecolecon.2023.108094</a></p>
-<p>Niszczota, P., Białek, M., &amp; Conway, P. (2022). Deontological and
-Utilitarian Responses to Sacrificial Dilemmas Predict Disapproval of Sin
-Stocks. <em>Social Psychology</em>, <em>53</em>(2), 51–62. <a
-href="https://doi.org/10.1027/1864-9335/a000474"
-class="uri">https://doi.org/10.1027/1864-9335/a000474</a></p>
-<p>Niszczota, P., &amp; Białek, M. (2021b). Women oppose sin stocks more
-than men do. <em>Finance Research Letters</em>, <em>41</em>, 101803. <a
-href="https://doi.org/10.1016/j.frl.2020.101803"
-class="uri">https://doi.org/10.1016/j.frl.2020.101803</a></p>
-<p>Niszczota, P., &amp; Białek, M. (2021a). The effect of gender and
-parenting daughters on judgments of morally controversial companies.
-<em>PLOS ONE</em>, <em>16</em>(12), e0260503. <a
-href="https://doi.org/10.1371/journal.pone.0260503"
-class="uri">https://doi.org/10.1371/journal.pone.0260503</a></p>
-<p>Niszczota, P., &amp; Kaszás, D. (2020). Robo-investment aversion.
-<em>PLOS ONE</em>, <em>15</em>(9), e0239277. <a
-href="https://doi.org/10.1371/journal.pone.0239277"
-class="uri">https://doi.org/10.1371/journal.pone.0239277</a></p>
-</div>
-<div id="working-papers" class="section level3">
-<h3>Working papers</h3>
-<p>Niszczota, P., &amp; Conway, P. (2023). <em>Saintly fund managers
-cannot earn a license to make sinful investments</em>. PsyArXiv. <a
-href="https://doi.org/10.31234/osf.io/8gsn4"
-class="uri">https://doi.org/10.31234/osf.io/8gsn4</a></p>
-<p>Niszczota, P., &amp; Kaszás, D. (2022). <em>Will the use of machines
-to identify negative activist investments backfire? Experimental
-evidence</em>. PsyArXiv. <a href="https://doi.org/10.31234/osf.io/f5dh6"
-class="uri">https://doi.org/10.31234/osf.io/f5dh6</a></p>
-</div>
+    <section class="cta-section shell">
+      <div class="cta-panel">
+        <div>
+          <p class="section-kicker">More research</p>
+          <h2>From moral investment to human–AI interaction.</h2>
+          <p class="cta-copy">Explore my current work on how people cooperate with, judge, and take advice from large language models.</p>
+        </div>
+        <a class="button" href="llm.html">Explore LLM research <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-main">
+        <div>
+          <p class="footer-name">Paweł Niszczota</p>
+          <p class="footer-affiliation">Associate Professor · Poznań University of Economics and Business · Head of Humans &amp; AI Laboratory</p>
+        </div>
+        <ul class="footer-links" aria-label="Academic profiles and contact">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="llm.html">LLM research</a></li>
+          <li><a href="https://orcid.org/0000-0002-4150-3646" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+          <li><a href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Paweł Niszczota</span>
+        <span>Corporate sins · Grant 2018/31/D/HS4/01814</span>
+      </div>
+    </div>
+  </footer>
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/simple.js" defer></script>
 </body>
 </html>

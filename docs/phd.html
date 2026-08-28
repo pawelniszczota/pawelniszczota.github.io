@@ -1,552 +1,168 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>PhD scholarships (archival)</title>
-
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 PhD Scholarships — Archive | Paweł Niszczota</title>
+  <meta name="description" content="Archived information about the 2026 Botonomics PhD scholarship call at the Poznań University of Economics and Business.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://pawelniszczota.github.io/phd.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/simple.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2026 PhD Scholarships — Archive | Paweł Niszczota">
+  <meta property="og:description" content="Archived information about the closed 2026 Botonomics PhD scholarship call.">
+  <meta property="og:url" content="https://pawelniszczota.github.io/phd.html">
+  <meta name="twitter:card" content="summary">
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="sidebar">
+    <div class="sidebar-head">
+      <a class="site-name" href="index.html">Paweł Niszczota</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Paweł Niszczota</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="llm.html">Large language models</a>
-</li>
-<li>
-  <a href="sinstocks.html">Sin stocks</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <nav id="main-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="llm.html">Large language models</a>
+      <a href="sinstocks.html">Sin stocks</a>
+      <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">HAI Lab ↗</a>
+    </nav>
+  </header>
 
-<div id="header">
+  <main id="main-content">
+    <section class="page-hero shell">
+      <a class="breadcrumb-link" href="index.html#students">Back to PhD information</a>
+      <p class="page-kicker">Archive · 2026 recruitment round</p>
+      <h1>Botonomics PhD scholarships.</h1>
+      <p class="page-intro">An archived call for two prospective doctoral students at the Humans &amp; AI Laboratory in Poznań.</p>
+    </section>
 
+    <section class="section">
+      <div class="shell">
+        <div class="archive-banner" role="status">
+          <span class="archive-dot" aria-hidden="true"></span>
+          <div>
+            <strong>This recruitment round is closed.</strong>
+            <p>The application deadline was 15 July 2026. This page remains available as an archive; current plans for prospective PhD students are shown on the <a href="index.html#students">homepage</a>.</p>
+          </div>
+        </div>
 
+        <div class="content-grid">
+          <aside class="content-aside" aria-label="Archived call sections">
+            <div class="content-aside-inner">
+              <p class="content-aside-title">On this page</p>
+              <ul class="content-nav">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#dates">Requirements &amp; dates</a></li>
+                <li><a href="#funding">Funding</a></li>
+                <li><a href="#application">Application</a></li>
+                <li><a href="#contact">Future opportunities</a></li>
+              </ul>
+            </div>
+          </aside>
 
-<h1 class="title toc-ignore">PhD scholarships (archival)</h1>
+          <div>
+            <section class="content-section" id="overview">
+              <p class="section-kicker">Overview</p>
+              <h2>Researching people and intelligent machines.</h2>
+              <p>The <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">Humans &amp; AI Laboratory</a> at the Poznań University of Economics and Business recruited two prospective PhD students for work on <strong>Botonomics: the influence of intelligent machines on economic behavior</strong>, financed by the National Science Centre, Poland through the SONATA BIS scheme.</p>
+              <p>Botonomics explores how large language models—including GPT, Claude, and Gemini—influence economic and human behavior. The project uses methods from behavioral economics and finance, including economic games and tasks that examine dishonest or risk-taking behavior.</p>
+              <div class="callout">
+                <p>Doctoral researchers were expected to help design and conduct online or laboratory experiments, analyze statistical data, co-author papers, and present findings at scientific conferences or workshops.</p>
+              </div>
+            </section>
 
-</div>
+            <section class="content-section" id="dates">
+              <p class="section-kicker">Eligibility</p>
+              <h2>Requirements &amp; key dates.</h2>
+              <ul>
+                <li>Candidates were required to hold—or be close to obtaining—a Master’s degree in a relevant discipline such as economics, finance, psychology, or computer science. Candidates from STEM disciplines and linguistics with exceptional qualifications were also considered.</li>
+                <li>Admission to the <a href="https://ue.poznan.pl/en/doctoral/doctoral-school/admission/" target="_blank" rel="noopener noreferrer">PUEB Doctoral School</a> was a condition for receiving the NCN research scholarship.</li>
+                <li>The position required working from Poznań or travelling to Poznań whenever Doctoral School courses required attendance.</li>
+              </ul>
+              <ul class="timeline">
+                <li><span class="timeline-year">15 Jul 2026</span><span>Application deadline for the SONATA BIS scholarship.</span></li>
+                <li><span class="timeline-year">31 Jul 2026</span><span>Deadline for applications to the PUEB Doctoral School.</span></li>
+                <li><span class="timeline-year">16 Sep 2026</span><span>Confirmation of admission to the Doctoral School.</span></li>
+                <li><span class="timeline-year">1 Oct 2026</span><span>Planned start of work.</span></li>
+              </ul>
+            </section>
 
+            <section class="content-section" id="funding">
+              <p class="section-kicker">Conditions</p>
+              <h2>Two stipends in parallel.</h2>
+              <p>Each doctoral student was to receive a Doctoral School stipend for up to 48 months and an NCN SONATA BIS stipend for 21 months, with a possible extension. At the rates stated in the archived call, combined monthly take-home pay was approximately <strong>5,168 PLN</strong> during the first 21 months.</p>
+              <h3>Doctoral School stipend</h3>
+              <ul>
+                <li>Approximately 3,570 PLN gross / 3,168 PLN net per month before the mid-study assessment.</li>
+                <li>Approximately 5,500 PLN gross / 4,881 PLN net per month after the assessment.</li>
+              </ul>
+              <h3>SONATA BIS stipend</h3>
+              <ul>
+                <li>2,000 PLN net per month for 21 months.</li>
+                <li>Possible extension by a further 9–15 months.</li>
+              </ul>
+              <p><small>Figures are retained from the original 2026 call for archival reference and may no longer reflect current rates.</small></p>
+            </section>
 
-<p>The HAI Lab at the Poznań University of Economics and Business
-(Poland; <a href="https://hai.ue.poznan.pl"
-class="uri">https://hai.ue.poznan.pl</a>) is currently recruiting
-<strong>two (prospective) PhD students</strong>, who will receive a
-double-scholarship (stipend) for their work on the project “Botonomics:
-the influence of intelligent machines on economic behavior”, financed by
-the National Science Centre, Poland (NCN) from funding scheme SONATA BIS
-(equivalent to the ERC Consolidator grant), and a scholarship (stipend)
-from the Doctoral School of the Poznań University of Economics and
-Business.</p>
-<p><strong>Botonomics</strong> explores how large language models (e.g.,
-GPT, Claude, Gemini) influence economic and human behavior. The project
-employs methods from behavioral economics and finance, such as economic
-games (e.g., Prisoner’s Dilemma, Ultimatum Game, Trust Game) and tasks
-analyzing dishonest or risk-taking behavior. Research involves both
-online experiments (e.g., Prolific) and laboratory experiments. We are
-looking for two prospective doctoral students who will be involved in
-co-designing online or laboratory experiments, conducting online or
-laboratory experiments, analyzing statistical data, and co-writing
-papers. You will have the ability to disseminate findings on work
-carried out within the project at scientific conferences or
-workshops.</p>
-<hr />
-<p><strong>Key requirements and dates</strong></p>
-<ul>
-<li><p>Candidates must hold a Master’s degree – recently obtained or
-just about to be obtained – in a relevant discipline (e.g., economics,
-finance, psychology, computer science). Candidates from STEM disciplines
-and linguistics with exceptional qualifications will also be
-considered.</p></li>
-<li><p>The selected candidates will pursue their PhD in the Doctoral
-School of the Poznań University of Economics and Business (henceforth:
-PUEB Doctoral School) under the supervision of the Principal
-Investigator. Admission to the PUEB Doctoral School is a condition for
-receiving the NCN research scholarship. For details on the admission
-procedure, please see <a
-href="https://ue.poznan.pl/en/doctoral/doctoral-school/admission/"
-class="uri">https://ue.poznan.pl/en/doctoral/doctoral-school/admission/</a>.
-Applying to the PUEB Doctoral School will require submitting a draft
-plan for the PhD thesis, along with other documents, no later than the
-31st of July 2026.</p></li>
-<li><p>Place of work: Poznań University of Economics and Business. Note
-that participation in the PUEB Doctoral School requires participating in
-courses, and so the position requires working from Poznań or travelling
-to Poznań whenever attending courses is required.</p></li>
-<li><p>Deadline for offers: 15th of July 2026; submissions before this
-deadline are encouraged, as it will allow more time for the Principal
-Investigator to aid with the application to the PUEB Doctoral
-School.</p></li>
-<li><p>Start date of work: 1st of October 2026.</p></li>
-</ul>
-<hr />
-<p><strong>Conditions of employment</strong></p>
-<p><strong>In brief:</strong> the scholarship pays roughly 5,000 PLN net
-per month (~€1,200 / $1,400, or ~€1,650 / $1,900 adjusted for purchasing
-power) for most of the program — more precisely ~5,168 PLN for the first
-21–24 months and ~4,881 PLN thereafter, rising to ~6,881 PLN during any
-period when the SONATA funding is extended. The full breakdown below
-explains the variation.</p>
-<p>Each doctoral student receives two stipends paid in parallel, both
-starting in October 2026:</p>
-<p><em>Doctoral School stipend (PUEB) — up to 48 months:</em></p>
-<ul>
-<li><p>~3570 PLN gross (~3168 PLN net) per month before the mid-study
-assessment</p></li>
-<li><p>~5500 PLN gross (~4881 PLN net) per month after the
-assessment.</p></li>
-<li><p>The mid-study assessment falls around month 24, so the higher
-rate applies from roughly month 25<br />
-onward</p></li>
-<li><p>Amounts may rise over time, as the stipend is set as a percentage
-of the minimum salary for a full professor in Poland (see <a
-href="https://www.gov.pl/web/nauka/stypendium-doktoranckie"
-class="uri">https://www.gov.pl/web/nauka/stypendium-doktoranckie</a>)<br />
-</p></li>
-</ul>
-<p><em>SONATA BIS stipend (National Science Centre) — 21 months,
-extendable:</em></p>
-<ul>
-<li><p>2000 PLN net per month (the NCN stipend is not subject to
-personal income tax, so its gross and net amounts are the same — this is
-why only one figure is given)</p></li>
-<li><p>Paid for 21 months, with the possibility of an extension by a
-further 9–15 months (a total of 30–36 months)</p></li>
-</ul>
-<p><strong><em>Combined monthly take-home</em></strong></p>
-<p>The exact schedule depends on whether the SONATA BIS stipend is
-extended.</p>
-<p><em>If the SONATA BIS stipend is not extended (21 months):</em></p>
-<ul>
-<li><p>Months 1–21: ~5168 PLN (3168 + 2000)<br />
-</p></li>
-<li><p>Months 22–24: ~3168 PLN (Doctoral School only, pre-assessment) —
-a temporary dip after the SONATA stipend ends and before the higher
-Doctoral School rate begins<br />
-</p></li>
-<li><p>Months 25–48: ~4881 PLN (Doctoral School only,
-post-assessment)</p></li>
-</ul>
-<p><em>If the SONATA BIS stipend is extended (to 30–36 months):</em></p>
-<ul>
-<li><p>Months 1–24: ~5168 PLN (3168 + 2000)</p></li>
-<li><p>Months 25 until the SONATA BIS stipend ends (month 30–36): ~6881
-PLN (4881 + 2000)</p></li>
-<li><p>From then until month 48: ~4881 PLN (Doctoral School only,
-post-assessment)</p></li>
-</ul>
-<p>At current exchange rates (~4.28 PLN/€, ~3.67 PLN/$); PPP-adjusted
-figures in brackets:<br />
-</p>
-<ul>
-<li><p>~5168 PLN ≈ €1,205 / $1,405 (€1,675 / $1,955 at PPP)<br />
-</p></li>
-<li><p>~4881 PLN ≈ €1,140 / $1,330 (€1,580 / $1,845 at PPP)<br />
-</p></li>
-<li><p>~6881 PLN ≈ €1,605 / $1,875 (€2,230 / $2,605 at PPP)</p></li>
-</ul>
-<hr />
-<p><strong>Details on project</strong></p>
-<p>Title: “Botonomics the influence of intelligent machines on economic
-behavior”, grant number: 2021/42/E/HS4/00289, funder” National Science
-Centre, Poland, funding scheme SONATA BIS 11. Principal Investigator: dr
-hab. Paweł Niszczota (Associate Professor at Poznań University of
-Economics and Business). For more insight into the project’s scope, see
-papers authored by the Principal Investigator on arXiv (<a
-href="https://arxiv.org/search/cs?searchtype=author&amp;query=Niszczota,+P"
-class="uri">https://arxiv.org/search/cs?searchtype=author&amp;query=Niszczota,+P</a>)
-and a summary of the project available at the National Science Centre’s
-website (<a
-href="https://projekty.ncn.gov.pl/en/index.php?projekt_id=528961"
-class="uri">https://projekty.ncn.gov.pl/en/index.php?projekt_id=528961</a>).
-The recruitment call for the PhD student scholarship is available here:
-<a
-href="https://www2.ncn.gov.pl/baza-ofert/?akcja=wyswietl&amp;id=232885"
-class="uri">https://www2.ncn.gov.pl/baza-ofert/?akcja=wyswietl&amp;id=232885</a></p>
-<hr />
-<p><strong>Required documents</strong></p>
-<ol style="list-style-type: decimal">
-<li><p>Cover letter in English addressed to the Principal Investigator
-justifying interest in the project.</p></li>
-<li><p>CV in English containing detailed information about publications,
-work on research projects, and experience gained in working on projects,
-as well as the possession of skills relevant to the project.</p></li>
-<li><p>A copy of the graduate (Master’s) diploma (or, for candidates yet
-to graduate, a declaration stating the expected date of obtaining the
-diploma).</p></li>
-<li><p>A declaration of intent to apply for admission to the PUEB
-Doctoral School.</p></li>
-<li><p>Confirmation of acceptance to the PUEB Doctoral School (16th of
-September 2026). The required documents (apart from the confirmation of
-acceptance to the PUEB Doctoral School) should be submitted
-electronically to the e-mail address of the Principal Investigator: <a
-href="mailto:pawel.niszczota@ue.poznan.pl"
-class="email">pawel.niszczota@ue.poznan.pl</a>, with “SONATA BIS 11
-Scholarship” in the e-mail subject line, by the 15th of July 2026 in PDF
-file format. Incomplete applications, applications that do not meet the
-formal requirements, and those submitted after the deadline will not be
-considered. We will contact selected candidates by e-mail or
-phone.</p></li>
-</ol>
-<p>Recruitment process Recruitment is a three-stage process and
-includes:</p>
-<ol style="list-style-type: decimal">
-<li><p>An assessment of the candidates’ documentation.</p></li>
-<li><p>An interview via Microsoft Teams or an equivalent
-platform.</p></li>
-<li><p>A parallel recruitment to the PUEB Doctoral School (deadline:
-31st of July 2026). This will require consulting with the PI to
-determine a preliminary plan of the PhD thesis. See <a
-href="https://ue.poznan.pl/en/doctoral/doctoral-school/admission/"
-class="uri">https://ue.poznan.pl/en/doctoral/doctoral-school/admission/</a>
-for more details. Early contact with the Principal Investigator is
-highly encouraged, to aid with the application to the PUEB Doctoral
-School.</p></li>
-</ol>
-<p>Candidates who meet the formal requirements and receive the best
-evaluation in the first stage will be invited to an online interview.
-Candidates will be notified about the recruitment results by e-mail. The
-recruitment results will also be published on the website of the Poznań
-University of Economics and Business after the announcement of the
-results of the recruitment to the PUEB Doctoral School (the 16th of
-September 2026).</p>
-<hr />
-<p><strong>Contact information</strong></p>
-<p>Please feel free to contact me (<a
-href="mailto:pawel.niszczota@ue.poznan.pl"
-class="email">pawel.niszczota@ue.poznan.pl</a>) for any enquiries! I
-appreciate passing on this information to anyone who might be interested
-in applying for this position.</p>
-<p>Paweł Niszczota, PhD<br />
-Associate Professor Head of Humans &amp; AI Laboratory (HAI Lab) Poznań
-University of Economics and Business Poznań, Poland<br />
-PI in SONATA BIS 11 grant</p>
-<hr />
-<p><strong><em>GDPR information clause</em></strong></p>
-<ol style="list-style-type: decimal">
-<li><p>The administrator of your personal data is the Poznań University
-of Economics with its registered office in Poznań (61-875),
-al. Niepodległości 10, NIP 777-00-05-497, REGON 00000-1525.</p></li>
-<li><p>The Administrator has appointed a Data Protection Inspector
-supervising the correctness of personal data processing, who can be
-contacted at the e-mail address: <a
-href="mailto:rodo@ue.poznan.pl">rodo@ue.poznan.pl</a>; room 1422
-Collegium Altum.</p></li>
-<li><p>Your personal data will be processed in connection with the
-recruitment procedure based on: • Art. 6 section 1 letter b) GDPR - in
-the scope of data indicated in labor law provisions, i.e. Art. 221 of
-the Labor Code, • art. 6 section 1 letter a) GDPR - in the scope of
-additional data indicated by you in the submitted CV and other documents
-consciously attached by you to the offer • Art. 6 section 1 letter c)
-GDPR - in the scope of data that the administrator is obliged to collect
-under national law</p></li>
-<li><p>Your personal data will be stored only for the period necessary
-for the purposes of their processing, i.e. for the duration of the
-competition, and after its completion for 12 months.</p></li>
-<li><p>Your data will not be used for automated decision-making or
-profiling and will not be transferred to third countries and
-international organizations.</p></li>
-<li><p>You have the right to access your personal data, rectify it,
-delete it, limit processing, transfer it and raise objections.</p></li>
-<li><p>In the scope of data for which consent to processing has been
-given, you have the right to withdraw it at any time, provided that this
-does not affect the legality of data processing that took place before
-the withdrawal.</p></li>
-<li><p>You have the right to lodge a complaint with the authority
-supervising the protection of personal data, i.e. the President of the
-Personal Data Protection Office.</p></li>
-<li><p>Providing your personal data to the extent resulting from Art.
-221 of the Labor Code is necessary to participate in the recruitment
-procedure. Providing additional data by you is voluntary. Full
-information about personal data is available on the University’s website
-at <a href="https://ue.poznan.pl/en/university/privacy-policy/"
-class="uri">https://ue.poznan.pl/en/university/privacy-policy/</a>.</p></li>
-</ol>
+            <section class="content-section" id="application">
+              <p class="section-kicker">Archived procedure</p>
+              <h2>Application materials.</h2>
+              <ol>
+                <li>A cover letter in English explaining interest in the project.</li>
+                <li>A CV in English describing publications, project experience, and relevant skills.</li>
+                <li>A copy of the Master’s diploma, or a declaration stating the expected graduation date.</li>
+                <li>A declaration of intent to apply to the PUEB Doctoral School.</li>
+                <li>Confirmation of admission to the PUEB Doctoral School at the later stage.</li>
+              </ol>
+              <p>The process consisted of document assessment, an online interview, and parallel recruitment to the PUEB Doctoral School. The original National Science Centre listing is available in the <a href="https://www2.ncn.gov.pl/baza-ofert/?akcja=wyswietl&amp;id=232885" target="_blank" rel="noopener noreferrer">NCN offer database</a>.</p>
 
+              <details class="archive-details">
+                <summary>Additional archived project details</summary>
+                <div>
+                  <p><strong>Project:</strong> Botonomics: the influence of intelligent machines on economic behavior.</p>
+                  <p><strong>Grant:</strong> 2021/42/E/HS4/00289 · SONATA BIS 11 · National Science Centre, Poland.</p>
+                  <p><strong>Principal Investigator:</strong> Paweł Niszczota, Associate Professor at the Poznań University of Economics and Business.</p>
+                  <p>Further context is available through the <a href="https://projekty.ncn.gov.pl/en/index.php?projekt_id=528961" target="_blank" rel="noopener noreferrer">National Science Centre project database</a> and the <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Niszczota,+P" target="_blank" rel="noopener noreferrer">author’s arXiv record</a>.</p>
+                </div>
+              </details>
+            </section>
 
+            <section class="content-section" id="contact">
+              <p class="section-kicker">Opportunities</p>
+              <h2>Future research opportunities.</h2>
+              <p>Current information about the laboratory and its research is available on the <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">Humans &amp; AI Laboratory website</a>.</p>
+              <p>Information about personal-data processing is available in the University’s <a href="https://ue.poznan.pl/en/university/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>.</p>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-main">
+        <div>
+          <p class="footer-name">Paweł Niszczota</p>
+          <p class="footer-affiliation">Associate Professor · Poznań University of Economics and Business · Head of Humans &amp; AI Laboratory</p>
+        </div>
+        <ul class="footer-links" aria-label="Navigation and contact">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="llm.html">LLM research</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Paweł Niszczota</span>
+        <span>Archived call · Applications closed</span>
+      </div>
+    </div>
+  </footer>
 
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/simple.js" defer></script>
 </body>
 </html>

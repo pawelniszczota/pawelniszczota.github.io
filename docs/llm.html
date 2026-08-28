@@ -1,366 +1,211 @@
-<!DOCTYPE html>
-
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Large language models</title>
-
-<script src="site_libs/header-attrs-2.31/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
-
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark the anchor link active (and if it's in a dropdown, also mark that active)
-  var dropdown = menuAnchor.closest('li.dropdown');
-  if (window.bootstrap) { // Bootstrap 4+
-    menuAnchor.addClass('active');
-    dropdown.find('> .dropdown-toggle').addClass('active');
-  } else { // Bootstrap 3
-    menuAnchor.parent().addClass('active');
-    dropdown.addClass('active');
-  }
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Large Language Models Research | Paweł Niszczota</title>
+  <meta name="description" content="Research by Paweł Niszczota on how large language models influence cooperation, social norms, credibility, advice, and economic behavior.">
+  <link rel="canonical" href="https://pawelniszczota.github.io/llm.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/simple.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Large Language Models Research | Paweł Niszczota">
+  <meta property="og:description" content="Botonomics: research on how intelligent machines influence economic and human behavior.">
+  <meta property="og:url" content="https://pawelniszczota.github.io/llm.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Large Language Models Research | Paweł Niszczota">
+  <meta name="twitter:description" content="Botonomics: research on how intelligent machines influence economic and human behavior.">
 </head>
-
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-
-<div class="container-fluid main-container">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+  <header class="sidebar">
+    <div class="sidebar-head">
+      <a class="site-name" href="index.html">Paweł Niszczota</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Paweł Niszczota</a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="llm.html">Large language models</a>
-</li>
-<li>
-  <a href="sinstocks.html">Sin stocks</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
+    <nav id="main-navigation" aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="llm.html" aria-current="page">Large language models</a>
+      <a href="sinstocks.html">Sin stocks</a>
+      <a href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">HAI Lab ↗</a>
+    </nav>
+  </header>
 
-<div id="header">
+  <main id="main-content">
+    <section class="page-hero shell">
+      <a class="breadcrumb-link" href="index.html#research">Back to research</a>
+      <p class="page-kicker">Research program · Humans &amp; AI</p>
+      <h1>Large language models.</h1>
+      <p class="page-intro">How do intelligent machines change cooperation, social norms, credibility, advice, and the choices people make?</p>
+    </section>
 
+    <section class="section">
+      <div class="shell">
+        <article class="grant-card">
+          <div>
+            <p class="section-kicker">National Science Centre, Poland</p>
+            <h2>Botonomics</h2>
+          </div>
+          <div class="grant-copy">
+            <p><strong>Botonomics: the influence of intelligent machines on economic behavior</strong> brings behavioral economics and experimental methods to questions emerging from human interaction with large language models.</p>
+            <p>The research presented on this page was financed by the National Science Centre, Poland.</p>
+            <dl class="grant-meta">
+              <div>
+                <dt>Grant number</dt>
+                <dd>2021/42/E/HS4/00289</dd>
+              </div>
+              <div>
+                <dt>Research setting</dt>
+                <dd>Humans &amp; AI Laboratory</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Questions</p>
+            <h2>What the work explores.</h2>
+          </div>
+          <p class="section-intro">The program studies both how people behave toward AI systems and how they judge other people who use those systems.</p>
+        </div>
+        <div class="topic-grid">
+          <article class="topic-card">
+            <h3>Cooperation</h3>
+            <p>Whether people cooperate with large language models—and how communication and prior human interaction shape that behavior.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Norms &amp; delegation</h3>
+            <p>Whether the same social norms apply when humans act directly or delegate decisions to large language models.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Credibility &amp; advice</h3>
+            <p>How people evaluate AI-assisted research, financial guidance, and dietary advice generated by conversational systems.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<h1 class="title toc-ignore">Large language models</h1>
+    <section class="section" id="papers">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Output</p>
+            <h2>Papers from the program.</h2>
+          </div>
+          <p class="section-intro">Working papers appear first, followed by peer-reviewed publications.</p>
+        </div>
 
-</div>
+        <div class="publication-group">
+          <h3 class="group-heading">Working papers <span>Preprints</span></h3>
+          <ol class="publication-list">
+            <li class="publication-item">
+              <div class="publication-year">2026</div>
+              <div>
+                <p class="publication-title">Antisocial behavior towards large language model users: Experimental evidence</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Christian Grützner · <span class="publication-venue">arXiv</span></p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.48550/arXiv.2601.09772" target="_blank" rel="noopener noreferrer" aria-label="Open Antisocial behavior towards large language model users on arXiv">arXiv</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2025</div>
+              <div>
+                <p class="publication-title">People Are Highly Cooperative with Large Language Models, Especially When Communication Is Possible or Following Human Interaction</p>
+                <p class="publication-meta">Paweł Niszczota, Tomasz Grzegorczyk &amp; Alexander Pastukhov · <span class="publication-venue">arXiv</span></p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.48550/arXiv.2507.18639" target="_blank" rel="noopener noreferrer" aria-label="Open People Are Highly Cooperative with Large Language Models on arXiv">arXiv</a>
+            </li>
+          </ol>
+        </div>
 
+        <div class="publication-group">
+          <h3 class="group-heading">Published papers <span>Peer reviewed</span></h3>
+          <ol class="publication-list">
+            <li class="publication-item">
+              <div class="publication-year">2026</div>
+              <div>
+                <p class="publication-title">Do people apply different norms to humans and large language models acting on their behalf? Evidence from norm elicitations in two canonical economic games</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Evangelos Antoniou · <span class="publication-venue">Journal of Experimental Social Psychology, 127</span>, 104991</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.jesp.2026.104991" target="_blank" rel="noopener noreferrer" aria-label="Open Do people apply different norms on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2025</div>
+              <div>
+                <p class="publication-title">Large language models can replicate cross-cultural differences in personality</p>
+                <p class="publication-meta">Paweł Niszczota, Michał Janczak &amp; Michał Misiak · <span class="publication-venue">Journal of Research in Personality, 115</span>, 104584</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.jrp.2025.104584" target="_blank" rel="noopener noreferrer" aria-label="Open Large language models can replicate cross-cultural differences in personality on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2023</div>
+              <div>
+                <p class="publication-title">GPT has become financially literate: Insights from financial literacy tests of GPT and a preliminary test of how people use it as a source of advice</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Shahid Abbas · <span class="publication-venue">Finance Research Letters, 58</span>, 104333</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.frl.2023.104333" target="_blank" rel="noopener noreferrer" aria-label="Open GPT has become financially literate on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2023</div>
+              <div>
+                <p class="publication-title">Judgements of research co-created by Generative AI: Experimental evidence</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Paul Conway · <span class="publication-venue">Economics and Business Review, 9</span>(2)</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.18559/ebr.2023.2.744" target="_blank" rel="noopener noreferrer" aria-label="Open Judgements of research co-created by Generative AI on DOI">DOI</a>
+            </li>
+            <li class="publication-item">
+              <div class="publication-year">2023</div>
+              <div>
+                <p class="publication-title">The credibility of dietary advice formulated by ChatGPT: Robo-diets for people with food allergies</p>
+                <p class="publication-meta">Paweł Niszczota &amp; Iwona Rybicka · <span class="publication-venue">Nutrition, 112</span>, 112076</p>
+              </div>
+              <a class="publication-link" href="https://doi.org/10.1016/j.nut.2023.112076" target="_blank" rel="noopener noreferrer" aria-label="Open The credibility of dietary advice formulated by ChatGPT on DOI">DOI</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-<p>The work shown on this page was financed by the National Science
-Centre, Poland. The project is titled “<strong>Botonomics: the influence
-of intelligent machines on economic behavior</strong>” (grant number:
-2021/42/E/HS4/00289).</p>
-<div id="working-papers" class="section level3">
-<h3>Working papers</h3>
-<p>Niszczota, P., &amp; Grützner, C. (2026). Antisocial behavior towards
-large language model users: Experimental evidence
-(No. arXiv:2601.09772). arXiv. <a
-href="https://doi.org/10.48550/arXiv.2601.09772"
-class="uri">https://doi.org/10.48550/arXiv.2601.09772</a></p>
-<p>Niszczota, P., Grzegorczyk, T., &amp; Pastukhov, A. (2025). People
-Are Highly Cooperative with Large Language Models, Especially When
-Communication Is Possible or Following Human Interaction
-(arXiv:2507.18639). arXiv. <a
-href="https://doi.org/10.48550/arXiv.2507.18639"
-class="uri">https://doi.org/10.48550/arXiv.2507.18639</a></p>
-</div>
-<div id="published-papers" class="section level3">
-<h3>Published papers</h3>
-<p>Niszczota, P., &amp; Antoniou, E. (2026). Do people apply different
-norms to humans and large language models acting on their behalf?
-Evidence from norm elicitations in two canonical economic games. Journal
-of Experimental Social Psychology, 127, 104991. <a
-href="https://doi.org/10.1016/j.jesp.2026.104991"
-class="uri">https://doi.org/10.1016/j.jesp.2026.104991</a></p>
-<p>Niszczota, P., Janczak, M., &amp; Misiak, M. (2025). Large language
-models can replicate cross-cultural differences in personality.
-<em>Journal of Research in Personality, 115,</em> 104584. <a
-href="https://doi.org/10.1016/j.jrp.2025.104584"
-class="uri">https://doi.org/10.1016/j.jrp.2025.104584</a></p>
-<p>Niszczota, P., &amp; Abbas, S. (2023). GPT has become financially
-literate: Insights from financial literacy tests of GPT and a
-preliminary test of how people use it as a source of advice. <em>Finance
-Research Letters</em>, <em>58</em>, 104333. <a
-href="https://doi.org/10.1016/j.frl.2023.104333"
-class="uri">https://doi.org/10.1016/j.frl.2023.104333</a></p>
-<p>Niszczota, P., &amp; Conway, P. (2023). Judgements of research
-co-created by Generative AI: Experimental evidence. <em>Economics and
-Business Review</em>, <em>9</em>(2). <a
-href="https://doi.org/10.18559/ebr.2023.2.744"
-class="uri">https://doi.org/10.18559/ebr.2023.2.744</a></p>
-<p>Niszczota, P., &amp; Rybicka, I. (2023). The credibility of dietary
-advice formulated by ChatGPT: Robo-diets for people with food allergies.
-<em>Nutrition</em>, <em>112</em>, 112076. <a
-href="https://doi.org/10.1016/j.nut.2023.112076"
-class="uri">https://doi.org/10.1016/j.nut.2023.112076</a></p>
-</div>
+    <section class="cta-section shell">
+      <div class="cta-panel">
+        <div>
+          <p class="section-kicker">Humans &amp; AI Laboratory</p>
+          <h2>Researching economic behavior in a world of intelligent machines.</h2>
+          <p class="cta-copy">Learn more about the laboratory, its people, and current work at the Poznań University of Economics and Business.</p>
+        </div>
+        <a class="button" href="https://hai.ue.poznan.pl" target="_blank" rel="noopener noreferrer">Visit HAI Lab <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-main">
+        <div>
+          <p class="footer-name">Paweł Niszczota</p>
+          <p class="footer-affiliation">Associate Professor · Poznań University of Economics and Business · Head of Humans &amp; AI Laboratory</p>
+        </div>
+        <ul class="footer-links" aria-label="Academic profiles and contact">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sinstocks.html">Sin stocks research</a></li>
+          <li><a href="https://orcid.org/0000-0002-4150-3646" target="_blank" rel="noopener noreferrer">ORCID</a></li>
+          <li><a href="https://scholar.google.com/citations?user=VCQWzd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Paweł Niszczota</span>
+        <span>Botonomics · Grant 2021/42/E/HS4/00289</span>
+      </div>
+    </div>
+  </footer>
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/simple.js" defer></script>
 </body>
 </html>

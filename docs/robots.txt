@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pawelniszczota.github.io/sitemap.xml

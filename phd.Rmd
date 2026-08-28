@@ -59,7 +59,7 @@ Required documents
 
 3.  A copy of the graduate (Master’s) diploma (or, for candidates yet to graduate, a declaration stating the expected date of obtaining the diploma).
 
-4.  A declaration of intent to apply for admission to the PUEB Doctoral School. 5. Confirmation of acceptance to the PUEB Doctoral School (16th of September 2026). The required documents (apart from the confirmation of acceptance to the PUEB Doctoral School) should be submitted electronically to the e-mail address of the Principal Investigator: [pawel.niszczota\@ue.poznan.pl](mailto:pawel.niszczota@ue.poznan.pl){.email}, with "SONATA BIS 11 Scholarship" in the e-mail subject line, by the 15th of July 2026 in PDF file format. Incomplete applications, applications that do not meet the formal requirements, and those submitted after the deadline will not be considered. We will contact selected candidates by e-mail or phone.
+4.  A declaration of intent to apply for admission to the PUEB Doctoral School. 5. Confirmation of acceptance to the PUEB Doctoral School (16th of September 2026). The application deadline was the 15th of July 2026. This recruitment round is closed; the original call remains available in the National Science Centre offer database linked above.
 
 Recruitment process Recruitment is a three-stage process and includes:
 
@@ -71,10 +71,10 @@ Recruitment process Recruitment is a three-stage process and includes:
 
 Candidates who meet the formal requirements and receive the best evaluation in the first stage will be invited to an online interview. Candidates will be notified about the recruitment results by e-mail. The recruitment results will also be published on the website of the Poznań University of Economics and Business after the announcement of the results of the recruitment to the PUEB Doctoral School (the 16th of September 2026).
 
-Please feel free to contact me ([pawel.niszczota\@ue.poznan.pl](mailto:pawel.niszczota@ue.poznan.pl){.email}) for any enquiries! I appreciate passing on this information to anyone who might be interested in applying for this position.
+Current information about the laboratory and future research opportunities is available at <https://hai.ue.poznan.pl>.
 
 Best,
 
 Paweł Niszczota, PhD\
 Associate Professor Head of Humans & AI Laboratory (HAI Lab) Poznań University of Economics and Business Poznań, Poland\
-PI in SONATA BIS 11 grant [pawel.niszczota\@ue.poznan.pl](mailto:pawel.niszczota@ue.poznan.pl){.email}
+PI in SONATA BIS 11 grant
